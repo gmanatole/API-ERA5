@@ -1,5 +1,7 @@
 READ ME FILE FOR THE API CODES USED TO DOWNLOAD CDS DATA
 
+This code has been implemented in the OSmOSE project. 
+
 I - Getting Started
 
 These codes are used to download data from the CDS (Climate Data Store).
