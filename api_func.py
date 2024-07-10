@@ -26,10 +26,10 @@ def make_cds_file(key, udi, path):
 		   os.mkdir('api')
 		except FileExistsError:
 		    pass
-		path_to_api = os.path.join(os.path.expanduser("~"), "api/")
+		path_to_api = os.path.join(os.path.expanduser("~"), "api")
 	else :
 		try :
-		   os.mkdir(os.path.join(path+'api'))
+		   os.mkdir(os.path.join(path, 'api'))
 		except FileExistsError:
 		    pass
 		path_to_api = os.path.join(path, 'api')
