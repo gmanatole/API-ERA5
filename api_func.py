@@ -1,11 +1,5 @@
 import cdsapi
-from datetime import date, datetime
 import os
-import calendar
-from tqdm import tqdm
-from netCDF4 import Dataset
-import numpy as np
-import pandas as pd
 
 #get_epoch_time = lambda x : calendar.timegm(x.timetuple()) if isinstance(x, datetime) else x
 
@@ -38,7 +32,7 @@ def make_cds_file(personnal_access_token, path):
 	os.chdir(path_to_api)
 	os.getcwd()
 
-def return_cdsbeta(filename, variables, years, months, days, hours, area):
+def return_cds(filename, variables, years, months, days, hours, area):
 
 	print('You have selected : \n')
 	for data in variables :
@@ -48,7 +42,7 @@ def return_cdsbeta(filename, variables, years, months, days, hours, area):
 
 	print('\nYour boundaries are : North {}°, South {}°, East {}°, West {}°'.format(area[0], area[2],
 			                                                         area[3], area[1]))
-	filename = filename + '.nc'
+	filename = filename + '.zip'
 
 	c = cdsapi.Client()
 
@@ -69,14 +63,14 @@ def return_cdsbeta(filename, variables, years, months, days, hours, area):
 		'day': days,
 		'time': hours,
 		'area' : area,
-		'download_format': 'unarchived',
+		'download_format': 'zip',
 		'data_format': 'netcdf',
 		}
 
-	c.retrieve(dataset, request).download(filename)
+	c.retrieve(dataset, request, filename)
 
 
-def return_cdsv2(filename, key, variables, years, months, days, hours, area):
+def return_old_cds(filename, key, variables, years, months, days, hours, area):
 
 	print('You have selected : \n')
 	sel = [print(variables) for data in variables]
