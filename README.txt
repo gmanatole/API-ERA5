@@ -1,22 +1,22 @@
-READ ME FILE FOR THE API CODES USED TO DOWNLOAD CDS DATA
+READ ME FILE FOR THE API CODES USED TO DOWNLOAD CDS DATA FROM ECMWF
 
 This code has been implemented in the OSmOSE project. 
 
 I - Getting Started
 
 These codes are used to download data from the CDS (Climate Data Store).
-More precisely it can download any hourly single level data since 1950 anywhere in the world.
-A list of the variables that can be downloaded is accessible here : https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=overview
-So far, the code has been prepared for surface temperature, u10 and v10 wind speed, total precipitation and wave direction and period.
+More precisely it can download any hourly single level data since 1940 anywhere in the world.
+A list of the variables that can be downloaded is accessible here : https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview
+So far, the code has names of variables for surface temperature, u10 and v10 wind speed, total precipitation and wave direction and period.
 
 Adding variables :
 Other variables can be added by looking for their correct names in : 
-https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=form
+https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download
 After checking the desired variables, click on 'Show API request' and copy the variable list and paste it as the data list in the jupyter notebook.
 
 Getting access to the CDS data requires an account. You can create one here :
 https://cds.climate.copernicus.eu/user/login
-After your account is created, clicking on the same link above gives you access to the UDI and key that you need to enter in the jupyter notebook. You can also find this information by clicking on your name in the upper right corner.
+After your account is created, clicking on the same link above gives you access to the personnal access token that you need to enter in the jupyter notebook. You can also find this information by clicking on your name in the upper right corner.
 
 Make sure all the packages are installed, you can install them using conda in a terminal.
 
@@ -28,7 +28,10 @@ This code is meant to be used locally, not on datamor for example. Both the jupy
 The area from where to download data is defined by a 'square' whose borders are the cardinal boundaries.
 
 The filename you define is only attributed to the raw data file downloaded from the cds. Additionnal formatted files are also created.
-All file will be created in your home directory, in a subdirectory called 'api'.
+Downloaded files will be in a zip file located at the indicated path and filename.
+
+If you want to download data in the GRIB format please change the Api_ERA.py file directly by modifying data_format in request.
+Otherwise data will be downloaded in netCDF format.
 
 III - Using the downloaded data
 
